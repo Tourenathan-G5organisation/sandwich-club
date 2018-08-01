@@ -11,6 +11,8 @@ import java.util.List;
 
 public class JsonUtils {
 
+    private static final String NAME = "name";
+
     public static Sandwich parseSandwichJson(String json) {
         String mainNameKey = "mainName";
         String alsoKnownAsKey = "alsoKnownAs";
@@ -22,9 +24,9 @@ public class JsonUtils {
         try {
 
             JSONObject sandWishInfo = new JSONObject(json);
-            String mainName = sandWishInfo.getJSONObject("name").getString(mainNameKey);
+            String mainName = sandWishInfo.getJSONObject(NAME).getString(mainNameKey);
 
-            JSONArray alsoKnowAsJsonArray = sandWishInfo.getJSONObject("name").getJSONArray(alsoKnownAsKey);
+            JSONArray alsoKnowAsJsonArray = sandWishInfo.getJSONObject(NAME).getJSONArray(alsoKnownAsKey);
             List<String> alsoKnownAs = new ArrayList<>();
             for (int i = 0; i < alsoKnowAsJsonArray.length(); i++) {
                 alsoKnownAs.add(alsoKnowAsJsonArray.getString(i));
